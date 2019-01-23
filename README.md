@@ -1,13 +1,6 @@
 # Java-Strings: In and Out of Strings in Java
-
-
 # String in Java
 
-
-##1. Java String Interview Questions
-##2. String Programming Examples
-##3. String Manipulation
-	
 
 ## 1.	Java String Interview Questions
 
@@ -133,7 +126,7 @@
 -	String implements CharSequence interface and provides implementation for subSequence() method
 -	subSequence() method internally invokes String class subString() method 
 
-	Code snippet of String subSequence method implementation:
+	#### Code snippet of String subSequence method implementation:
 
 	public CharSequence subSequence(int beginIndex, int endIndex) {
 		return this.substring(beginIndex, endIndex);
@@ -146,7 +139,7 @@
 -	Ideally we should always use String substring method	
 	
 	
-	Code Snippet of subSequence() method Use Cases:
+	#### Code Snippet of subSequence() method Use Cases:
 	
 		public class StringSubsequence {
 
@@ -170,7 +163,7 @@
 		}
 
 
-	Output:
+	#### Output:
 		
 		Last 4 char String: guru
 		First 4 char String: www.
@@ -188,9 +181,9 @@
 ### Question #7. How to compare two Strings in java program?	
 
 - 	Java String implements java.lang.Comparable interface
--	There are two variants of compareTo() methods 
+####	There are two variants of compareTo() methods 
 	
-	1.	compareTo(String anotherString)
+	#### 1.	compareTo(String anotherString)
 	
 		-	compareTo() method 	String object with passed String Objects Lexicographically
 		-	If String object precedes the argument passed, it returns negative integer 
@@ -198,14 +191,14 @@
 		-	It returns zero when both the String have the same value
 		-	In this case equals(String str) method will also return true
 		
-	2.	compareToIgnoreCase(String anotherString)
+	#### 2.	compareToIgnoreCase(String anotherString)
 
 		-	This method is similar to the first one, except that it ignores the case
 		-	It uses String CASE_INSENSITIVE_ORDER Comparator for case insensitive comparison
 		-	If the value is zero then equalsIgnoreCase(String str) will also return true
 			
 
-	Code Snippet 1:
+	#### Code Snippet 1:
 	
 		public class StringCompareToExample {
 			/**
@@ -219,7 +212,7 @@
 			}
 		}
 		
-	Output:
+	#### Output:
 
 		-3
 		0
@@ -227,7 +220,7 @@
 	-	Above negative output is because “ABC” is lexicographically less than the “DEF”
 	-	Output is -3 because it compares the character values one by one	
 	
-	Code Snippet 2:
+	#### Code Snippet 2:
 	
 		public static void main(String[] args) {
 			char a = 'A';
@@ -235,7 +228,8 @@
 			System.out.println(a-d); //prints -3
 		}
 	
-	Output: 
+	#### Output: 
+	
 		-3
 	
 	-	So when “ABC” is compared to “DEF”, the character at first index is compared
@@ -253,7 +247,7 @@
 -	Or we can use toCharArray() method to convert String to character array
 
 
-	Code Snippet:	
+	#### Code Snippet:	
 		
 		
 		public static void main(String[] args) {
@@ -275,10 +269,11 @@
 		}
 	
 	
-	Output:	
-		17
-		1
-		The Great
+	#### Output:	
+	
+			17
+			1
+			The Great
 
 
 
@@ -290,7 +285,7 @@
 -	We can use String constructor new String(byte[] arr) to convert byte array to String
 
 
-	Code Snippet of String to Byte Array:
+	#### Code Snippet of String to Byte Array:
 		
 		public static void main(String[] args) {
 			String str = "Bharath The Great";
@@ -298,12 +293,13 @@
 			// print the byte[] elements
 			System.out.println("String to byte array: " + Arrays.toString(byteArr));
 		}
-	Output: 
-		[66, 104, 97, 114, 97, 116, 104, 32, 84, 104, 101, 32, 71, 114, 101, 97, 116]
+	#### Output: 
+	
+			[66, 104, 97, 114, 97, 116, 104, 32, 84, 104, 101, 32, 71, 114, 101, 97, 116]
 		
 		
 		
-	Code snippet of Byte Array to String
+	#### Code snippet of Byte Array to String
 	
 		public static void main(String[] args) {
 			byte[] byteArray = { 'B', 'H', 'A', 'R', 'A', 'T','H' };
@@ -319,10 +315,10 @@
 		byte[] byteArray1 = { 80, 65, 78, 75, 65, 74 };
 		String str = new String(byteArray1, 0, 3, StandardCharsets.UTF_8);
 	
-	Output:
+	#### Output:
 		
-		BHARATH
-		BHARATH
+			BHARATH
+			BHARATH
 		
 		
 ### Question #10. Can we use String in switch case?
@@ -339,7 +335,7 @@
 	-	Than chained if-else-if statements
 
 
-	Code Snippet of String in Switch:
+	#### Code Snippet of String in Switch:
 	
 		static final String COLOR_RED = "RED";
 
@@ -355,9 +351,9 @@
 			}
 		}
 
-	Output:
+	#### Output:
 	
-		Defalut and Switch is Case Sensitive
+		   Defalut and Switch is Case Sensitive
 
 		
 ### Question #11.	Write a program to print all permutations of String?
@@ -374,7 +370,7 @@
 -	StringBuilder is not Thread Safe
 -	StringBuilder performance is fast than StringBuffer
 
-	1.	String 
+	#### 1.	String 
 
 	-	A String represents a string in the UTF-16 format
 	-	+ operator is overloaded for String and used to concatenate two Strings
@@ -387,7 +383,7 @@
 	-	For caller, its like calculations are happening every time but internally it’s cached in hash field
 
 
-	2.	String vs StringBuffer
+	#### 2.	String vs StringBuffer
 
 	-	Since String is immutable in java, whenever we do String manipulation like concat, substring etc, it generates a new String and discard the older String for garbage collection
 
@@ -398,7 +394,7 @@
 
 
 
-	3.	StringBuffer vs StringBuilder
+	#### 3.	StringBuffer vs StringBuilder
 
 	-	StringBuffer was the only choice for String manipulation till Java 1.4
 	- 	But it has one disadvantage that all of its public methods are synchronized
@@ -409,7 +405,7 @@
 
 
 
-	4.	String vs StringBuffer vs StringBuilder
+	#### 4.	String vs StringBuffer vs StringBuilder
 
 	-	String is immutable whereas StringBuffer and StringBuider are mutable classes
 
@@ -432,37 +428,37 @@
 -	Strings are used in Java ClassLoader and immutability provides security that correct class is getting loaded by Classloader
 
 
-	Benefits of String Immutability
+	#### Benefits of String Immutability
 	
-	1.	Saves lot of Heap space
+	##### 1.	Saves lot of Heap space
 		
 		-	This way Java Runtime saves a lot of java heap space because different String variables can refer to same String variable in the pool
 		
-	2.	Thread Safe
+	##### 2.	Thread Safe
 		
 		-   Since String is immutable, it is safe for multithreading 
 		-	And a single String instance can be shared across different threads
 		-	This avoid the usage of synchronization for thread safety, Strings are implicitly thread safe
 				
-	3.	Class Loading
+	##### 3.	Class Loading
 	
 		-	Strings are used in Java ClassLoader and immutability provides security that correct class is getting loaded by ClassLoader
 		-	For example, if we are trying to load java.sql.Connection class but the referenced value is changed to myhacked.Connection class that can do unwanted things to our database
 		
-	4.	HashMap key  --> hashcode is cached
+	##### 4.	HashMap key  --> hashcode is cached
 		
 		-	Since String is immutable, its hashcode is cached at the time of creation and it doesn’t need to be calculated again
 		-	This makes it a great candidate for key in a Map 
 		-	And it’s processing is fast than other HashMap key objects
 		-	This is why String is mostly used Object as HashMap keys
 	
-	5.	Security
+	##### 5.	Security
 		
 		-	If String is not immutable then it would cause severe security threat to the application
 		-	For example, database username, password are passed as String to get database connection and in socket programming host and port details passed as String
 		-	Since String is immutable it’s value can’t be changed otherwise any hacker could change the referenced value to cause security issues in the application
 	
-	6.	String Intern
+	##### 6.	String Intern
 	
 		-   If String would not have been immutable, then String interning would not have been possible 
 		-	Because if any variable would have changed the value, it would have been reflected to other variables also
@@ -473,7 +469,7 @@
 -	We can use split(String regex) to split the String into String array
 - 	public String[] split(String regex): split() method is used to split the string based on the given regular expression
 	
-	Code Snippet of String split():
+	#### Code Snippet of String split():
 	
 		String s = "abcaada";
 		System.out.println(Arrays.toString(s.split("a")));
@@ -482,7 +478,7 @@
 -	Variable that contains name and address with comma as delimiter
 -	Now address can have commas in them, so we can use this method
 
-	Code Snippet of String split():
+	#### Code Snippet of String split():
 	
 		String s = "Bharth,Bangalore,INDIA";
 		String[] data = s.split(",", 2);
@@ -496,7 +492,7 @@
 -	If n is non-positive then the pattern will be applied as many times as possible and the array can have any length
 -	If n is zero then the pattern will be applied as many times as possible, the array can have any length, and trailing empty strings will be discarded
 
-	Code Snippet of String split():
+	#### Code Snippet of String split():
 		
 		String line = "I am a Developer";
 		
@@ -530,7 +526,7 @@
 -	There is another function equalsIgnoreCase that we can use to ignore case
 
 
-	Code Snippet of equals and equalsIgnoreCase()
+	#### Code Snippet of equals and equalsIgnoreCase()
 	
 		
 		String s1 = "abc";
@@ -560,7 +556,7 @@
 	-	We can use intern() method to put it into the pool or refer to other String object from string pool having same value
 
 	
-	Code Snippet of String Constant Pool:
+	#### Code Snippet of String Constant Pool:
 	
 		public class StringPool {
 
@@ -578,7 +574,7 @@
 			}
 		}
 		
-		Output:
+	#### Output:
 		
 			s1 == s2 :true
 			s1 == s3 :false
@@ -626,7 +622,7 @@
 		-	Third to assign the updated value to the field reference
 
 
-	Code Snippet of showing problem with increment:
+	#### Code Snippet of showing problem with increment:
 	
 		public class ThreadSafety {
 			public static void main(String[] args) throws InterruptedException {
