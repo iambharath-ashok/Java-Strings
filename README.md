@@ -183,59 +183,59 @@
 - 	Java String implements java.lang.Comparable interface
 ####	There are two variants of compareTo() methods 
 	
-	#### 1.	compareTo(String anotherString)
+##### 1.	compareTo(String anotherString)
+
+-	compareTo() method 	String object with passed String Objects Lexicographically
+-	If String object precedes the argument passed, it returns negative integer 
+-	If String object follows the argument String passed, it returns a positive integer
+-	It returns zero when both the String have the same value
+-	In this case equals(String str) method will also return true
 	
-		-	compareTo() method 	String object with passed String Objects Lexicographically
-		-	If String object precedes the argument passed, it returns negative integer 
-		-	If String object follows the argument String passed, it returns a positive integer
-		-	It returns zero when both the String have the same value
-		-	In this case equals(String str) method will also return true
+##### 2.	compareToIgnoreCase(String anotherString)
+
+-	This method is similar to the first one, except that it ignores the case
+-	It uses String CASE_INSENSITIVE_ORDER Comparator for case insensitive comparison
+-	If the value is zero then equalsIgnoreCase(String str) will also return true
 		
-	#### 2.	compareToIgnoreCase(String anotherString)
 
-		-	This method is similar to the first one, except that it ignores the case
-		-	It uses String CASE_INSENSITIVE_ORDER Comparator for case insensitive comparison
-		-	If the value is zero then equalsIgnoreCase(String str) will also return true
-			
+#### Code Snippet 1:
 
-	#### Code Snippet 1:
-	
-		public class StringCompareToExample {
-			/**
-			 * This class show String compareTo examples
-			 * @param args
-			 */
-			public static void main(String[] args) {
-				String str = "ABC";
-				System.out.println(str.compareTo("DEF"));
-				System.out.println(str.compareToIgnoreCase("abc"));
-			}
-		}
-		
-	#### Output:
-
-		-3
-		0
-	
-	-	Above negative output is because “ABC” is lexicographically less than the “DEF”
-	-	Output is -3 because it compares the character values one by one	
-	
-	#### Code Snippet 2:
-	
+	public class StringCompareToExample {
+		/**
+		 * This class show String compareTo examples
+		 * @param args
+		 */
 		public static void main(String[] args) {
-			char a = 'A';
-			char d = 'D';
-			System.out.println(a-d); //prints -3
+			String str = "ABC";
+			System.out.println(str.compareTo("DEF"));
+			System.out.println(str.compareToIgnoreCase("abc"));
 		}
+	}
 	
-	#### Output: 
-	
-		-3
-	
-	-	So when “ABC” is compared to “DEF”, the character at first index is compared
-	-	Since they are different and ‘A’ comes before ‘D’ lexicographically
-	-	It returns a negative integer with the difference between them, hence output is -3
-	-	If we compare “AABC” with “ADBC”, then also we will get the same output as -3
+#### Output:
+
+	-3
+	0
+
+-	Above negative output is because “ABC” is lexicographically less than the “DEF”
+-	Output is -3 because it compares the character values one by one	
+
+#### Code Snippet 2:
+
+	public static void main(String[] args) {
+		char a = 'A';
+		char d = 'D';
+		System.out.println(a-d); //prints -3
+	}
+
+#### Output: 
+
+	-3
+
+-	So when “ABC” is compared to “DEF”, the character at first index is compared
+-	Since they are different and ‘A’ comes before ‘D’ lexicographically
+-	It returns a negative integer with the difference between them, hence output is -3
+-	If we compare “AABC” with “ADBC”, then also we will get the same output as -3
 
 
 
