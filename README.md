@@ -432,36 +432,36 @@
 	
 	##### 1.	Saves lot of Heap space
 		
-		-	This way Java Runtime saves a lot of java heap space because different String variables can refer to same String variable in the pool
+	-	This way Java Runtime saves a lot of java heap space because different String variables can refer to same String variable in the pool
 		
 	##### 2.	Thread Safe
 		
-		-   Since String is immutable, it is safe for multithreading 
-		-	And a single String instance can be shared across different threads
-		-	This avoid the usage of synchronization for thread safety, Strings are implicitly thread safe
+	-   Since String is immutable, it is safe for multithreading 
+	-	And a single String instance can be shared across different threads
+	-	This avoid the usage of synchronization for thread safety, Strings are implicitly thread safe
 				
 	##### 3.	Class Loading
 	
-		-	Strings are used in Java ClassLoader and immutability provides security that correct class is getting loaded by ClassLoader
-		-	For example, if we are trying to load java.sql.Connection class but the referenced value is changed to myhacked.Connection class that can do unwanted things to our database
+	-	Strings are used in Java ClassLoader and immutability provides security that correct class is getting loaded by ClassLoader
+	-	For example, if we are trying to load java.sql.Connection class but the referenced value is changed to myhacked.Connection class that can do unwanted things to our database
 		
 	##### 4.	HashMap key  --> hashcode is cached
 		
-		-	Since String is immutable, its hashcode is cached at the time of creation and it doesn’t need to be calculated again
-		-	This makes it a great candidate for key in a Map 
-		-	And it’s processing is fast than other HashMap key objects
-		-	This is why String is mostly used Object as HashMap keys
+	-	Since String is immutable, its hashcode is cached at the time of creation and it doesn’t need to be calculated again
+	-	This makes it a great candidate for key in a Map 
+	-	And it’s processing is fast than other HashMap key objects
+	-	This is why String is mostly used Object as HashMap keys
 	
 	##### 5.	Security
 		
-		-	If String is not immutable then it would cause severe security threat to the application
-		-	For example, database username, password are passed as String to get database connection and in socket programming host and port details passed as String
-		-	Since String is immutable it’s value can’t be changed otherwise any hacker could change the referenced value to cause security issues in the application
+	-	If String is not immutable then it would cause severe security threat to the application
+	-	For example, database username, password are passed as String to get database connection and in socket programming host and port details passed as String
+	-	Since String is immutable it’s value can’t be changed otherwise any hacker could change the referenced value to cause security issues in the application
 	
 	##### 6.	String Intern
 	
-		-   If String would not have been immutable, then String interning would not have been possible 
-		-	Because if any variable would have changed the value, it would have been reflected to other variables also
+	-   If String would not have been immutable, then String interning would not have been possible 
+	-	Because if any variable would have changed the value, it would have been reflected to other variables also
 	
 
 ### Question #15.	How to Split String in Java?
