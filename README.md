@@ -1,19 +1,277 @@
 # Java-Strings: In and Out of Strings in Java
-# String in Java
+
+## Java String Interview Questions
 
 
-## 1.	Java String Interview Questions
+----------------------------------------------------------------
 
-### Question #1.	What is String in Java? Is String is Data Type?
+### Question:	What is String in Java? Is String is Data Type?
 
--	String is a Class in java and defined in java.lang package
+-	String is a final class defined in java.lang package
+- 	String is not a keyword in java
 -	String is  not a primitive data type like int and long
--	String class represents character Strings
+-	String is used to represent the set of characters in java
 -	String Immutable and Final
--	JVM uses String Pool to store all the objects
+-	JVM uses String Pool to store all the String Literals
+----------------------------------------------------------------
+### Question: Is String a primitive type or derived type?
+
+-	A String is a derived type since it has state and behavior
+-   For example, it has methods like substring(), indexOf(), and equals(), which primitives cannot have
+
+#### Some Special Characteristics of String:
+	
+	
+-	While strings are not stored on the call stack like primitives are
+-	They are stored in a special memory region called the string pool
+-	Like primitives, we can use the + operator on strings
+-	And again, like primitives, we can create an instance of a String without the new keyword
+
+----------------------------------------------------------------
+### Question: How is a String stored in memory?
+
+-	String is Stored in String Constant Pool of Method Area
+-	Method Area is Logically part of Heap Area
+-	The specification does not dictate the location, memory size, or garbage collection policies
+-	It can be implementation-specific
+-	This runtime constant pool for a class or interface is constructed when the class or interface is created by the JVM
+
+----------------------------------------------------------------
+
+### Question: Are interned strings eligible for garbage collection in Java?
+
+-	Yes, all Strings in the string pool are eligible for garbage collection if there are no references from the program
+
+----------------------------------------------------------------
+
+### Question: For which String operations is it important to supply a Locale?
+
+-	The Locale class allows us to:
+	
+	- 	Differentiate between cultural locales 
+	- 	As well as to format our content appropriately
+
+-	When it comes to the String class:
+	
+	-	We need it when rendering strings in format 
+	-	Or when lower- or upper-casing strings
+
+-	In fact, if we forget to do this:
+	
+	-	We can run into problems with portability, security, and usability
+
+----------------------------------------------------------------
+### Question: What is the underlying character encoding for strings?
+
+-	According to String’s Javadocs, Java stores strings in the UTF-16 format internally
+-	The char data type and java.lang.Character objects are also based on the original Unicode specification
+-	Which defined characters as fixed-width 16-bit entities
+----------------------------------------------------------------
+
+### Question: What is StringJoiner?
 
 
-### Question #2.	What are different ways to create String Object?
+-	StringJoiner is a class introduced in Java 8 for joining separate strings into one
+-	Like taking a list of colors and returning them as a comma-delimited string
+-	We can supply a delimiter as well as a prefix and suffix:
+
+	StringJoiner joiner = new StringJoiner(",", "[", "]");
+		joiner.add("Red")
+		  .add("Green")
+		  .add("Blue");
+		 
+----------------------------------------------------------------
+### Question: What is special about string objects as compared to objects of other derived types?
+
+1.	Without new Operator:
+
+	-   One special thing about string objects is that you can create string objects without using new operator i.e using string literals
+	-	This is not possible with other derived types (except wrapper classes). 
+
+2.	Concatenation using + operator:
+
+	-	One more special thing about strings is that you can concatenate two string objects using ‘+’
+	-	This is the relaxation java gives to string objects as they will be used most of the time while coding.
+
+3.	String Constant Pool:
+
+	-	And also java provides string constant pool to store the string objects
+	
+----------------------------------------------------------------
+### Question: What do you mean by mutable and immutable objects?
+
+-	Immutable objects are like constants
+
+	-	We can’t modify them once they are created. They are final in nature
+
+-	Where as mutable objects are concerned, we can perform modifications to them
+----------------------------------------------------------------
+### Question: Which is the final class in these three classes – String, StringBuffer and StringBuilder?
+
+-	All String, StringBuffer, StringBuilder are final
+
+----------------------------------------------------------------
+### Question: What is the String constant pool?
+
+-	The string pool  is a special memory region where the JVM stores String instances
+-	It optimizes application performance by reducing how often and how many strings are allocated:
+
+	-	The JVM stores only one copy of a particular String in the pool
+	-	When creating a new String, the JVM searches in the pool for a String having the same value
+	-	If found, the JVM returns the reference to that String without allocating any additional memory
+	-	If not found, then the JVM adds it to the pool (interns it) and returns its reference
+
+----------------------------------------------------------------
+
+### Question: What is the difference between String, StringBuffer and StringBuilder?
+ 
+-	Immutability :
+	
+	-	As objects of String class are immutable, objects of StringBuffer and StringBuilder class are mutable
+	-	we can change the contents of StringBuffer and StringBuider objects at any time of execution
+	-	When we change the content, new objects are not created
+	-	Instead of that the changes are applied to existing object
+	-	Thus solving memory issues may caused by String class
+
+-	Object Creation :
+
+	-	We have to use ‘new‘ operator to create objects to StringBuffer and StringBuilder classes
+	-	We can’t use string literals to create objects to these classes
+	-	For example, we can’t write StringBuffer sb = “JAVA” or StringBuilder sb = “JAVA”. It gives compile time error.
+	-	But, we can use both string literals and new operator to create objects to String class
+	
+-	Storage Area :
+	
+	-	As objects of StringBuffer and StringBuilder are created using only new operator, they are stored in heap memory
+	-	Where as objects of String class are created using both string literals and new operator
+	-	They are stored in string constant pool as well as heap memory
+	
+-	Thread Safety :
+	
+	-	Any immutable object in Java is thread safety. 
+	-	Because they are unchangeable once they are created
+	-	Any type of thread can’t change the content of immutable object
+	-	This applies to objects of String class also
+	-	Of the StringBuffer and StringBuilder objects, only StringBuffer objects are thread safety
+	-	All necessary methods in StringBuffer class are synchronized so that only one thread can enter into it’s object at any point of time
+	-	Where as StringBuilder objects are not thread safety
+
+-	Performance :
+	
+	-	Because of thread safety property of String and StringBuffer classes, they reduces the performance of multithreaded applications
+	-	Because, multiple threads can’t enter into objects of these classes simultaneously
+	-	One thread has to wait until another thread is finished with them
+	-	But, we will not find performance problems if we use StringBuilder class
+	-	Because, multiple threads can enter into objects of this class
+		
+
+-	String Concatenation :
+
+	-	There will be serious performance issues when we are performing lots of string concatenation using String class
+	-	This is because, each time we perform string concatenation using string class, a new object will be created with the concatenated string
+	-	This slows down an application
+	-	But, if we can use either StringBuffer or StringBuilder instead of String class concatenation
+	
+-	equals() and hashCode() Methods
+
+	-	In StringBuffer and StringBuilder classes, equals() and hashCode methods are not overrided
+	-	Where as in String class they are overriden
+
+-	toString() Method :
+
+	-	toString() method is overrided in all three classes
+	-	We can also convert StringBuffer and StringBuilder objects to String type by calling toString() method on them.
+
+----------------------------------------------------------------
+
+### Question: Why StringBuffer and StringBuilder classes are introduced in java when there already exist String class to represent the set of characters?	
+	
+-	The objects of String class are immutable in nature. i.e we can’t modify them once they are created
+-	If we try to modify them, a new object will be created with modified content
+-	This may cause memory and performance issues if we are performing lots of string modifications 
+-	To overcome these issues, StingBuffer and StringBuilder classes are introduced in java
+	
+----------------------------------------------------------------	
+### Question: How do you create mutable string objects?
+
+
+-	Using StringBuffer and StringBuilder classes
+-	These classes provide mutable string objects
+
+----------------------------------------------------------------	
+### Question: Which one will you prefer among “==” and equals() method to compare two string objects?
+
+-	equals() method because it compares two string objects based on their content
+-	That provides more logical comparison of two string objects
+-	If we use “==” operator, it checks only references of two objects are equal or not
+-	It may not be suitable in all situations
+
+
+----------------------------------------------------------------	
+### Question: Where exactly string constant pool is located in the memory?
+
+- Heap Area
+
+-----------------------------------------------------------------
+### Question: What is string intern?
+
+-	String object in the string constant pool is called as String Intern
+-	We can create an exact copy of heap memory string object in string constant pool
+-	This process of creating an exact copy of heap memory string object in the string constant pool is called interning
+-	intern() method is used for interning
+--------------------------------------------------------------------
+### Question: What is the main difference between Java strings and C, C++ strings?
+
+-	In C and C++, strings are terminated with null character
+-	But in java, strings are not terminated with null character
+-	Strings are treated as objects in java
+
+--------------------------------------------------------------------
+### Question: Can we call String class methods using string literals?
+
+-	Yes, we can call String class methods using string literals
+
+--------------------------------------------------------------------
+### Question: What do you think about string constant pool? Why they have provided this pool as we can store string objects in the heap memory itself?
+
+-	String constant pool increases the reusability of existing string objects
+-	When we are creating a string object using string literal, JVM first checks string constant pool
+-	If that object is available, it returns reference of that object rather creating a new object
+-	This will also speed up your application as only reference is returned 
+-	And also saves the memory as no two objects with same content are created
+--------------------------------------------------------------------
+### Question: Why You Need String Constant Pool?
+
+-	String objects are most used objects in the development of any kind of applications
+-	Therefore, there has to be a special arrangement to store these objects
+-	String Constant Pool is one such special arrangement
+-	In string constant pool, there will be no two objects with the same content
+-	Heap memory can have any number of objects with same content
+
+-	Imagine creating 1000 string objects with same content in heap memory and one string object with that content in String Constant Pool
+
+-	Which one saves the memory?
+-	which one will save the time? 
+-	Which one will be accessed faster?
+
+-	It is, of course, String Constant Pool
+-	That’s why you need String Constant Pool
+
+--------------------------------------------------------------------
+### Question: What is the use of interning the string?
+
+-	To Save The memory Space :
+
+-	For Faster Comparison :
+
+	-	Assume that there are two string objects s1 and s2 in heap memory 
+	-	And we need to perform comparison of these two objects more often
+	-	Then using s1.intern() == s2.intern() will be more faster than s1.equals(s2)
+	-	Because, equals() method performs character by character comparison 
+	-	Where as “==” operator just compares references of objects
+
+--------------------------------------------------------------------
+### Question: What are different ways to create String Object?
 
 -	We can create String object using new operator like any normal java class 
 -	We can use double quotes to create a String object
@@ -44,8 +302,10 @@
 	-	JVM creates the String object in Heap Memory but don’t store it into the String Pool
 	-	We can use intern() method to store the String object into String pool 
 	-	Or return the reference if there is already a String with equal value present in the pool
+
+----------------------------------------------------------------	
 	
-### Question #3.	Write a method to check if input String is Palindrome?
+### Question: Write a method to check if input String is Palindrome?
 
 	
 	public boolean isPalindrome(String str) {
@@ -84,9 +344,10 @@
 		}
 		return true;
 	}
+
+----------------------------------------------------------------	
 	
-	
-### Question #4.	Write a method that will remove given character from the String?
+### Question: Write a method that will remove given character from the String?
 	
 	
 	
@@ -100,7 +361,8 @@
 		return str.replaceAll(Character.toString(characterToBeRemoved), "");
 	}
 	
-### Question #5.	How can we make String upper case or lower case?
+----------------------------------------------------------------	
+### Question:  How can we make String upper case or lower case?
 
 
 	public String toLowerCase(String str) {
@@ -119,8 +381,9 @@
 		}
 		return str.toUpperCase();
 	}
+----------------------------------------------------------------
 	
-### Question #6.	What is String subSequence method?
+### Question:  What is String subSequence method?
 
 -	Java 1.4 has introduced CharSequence interface
 -	String implements CharSequence interface and provides implementation for subSequence() method
@@ -147,7 +410,8 @@
 			 * This class shows usage of String subSequence method
 			 * 
 			 * @param args
-			 */
+			 ***/
+			 
 			public static void main(String[] args) {
 				String str = "www.iambharath.guru";
 				System.out.println("Last 4 char String: " + str.subSequence(str.length() - 4, str.length()));
@@ -173,14 +437,11 @@
 		subSequence == subSequence ? false
 		substring equals subSequence ? true
 
-		
-		
-		
-	
-	
-### Question #7. How to compare two Strings in java program?	
+----------------------------------------------------------------		
+### Question: How to compare two Strings in java program?	
 
 - 	Java String implements java.lang.Comparable interface
+
 ####	There are two variants of compareTo() methods 
 	
 ##### 1.	compareTo(String anotherString)
@@ -204,7 +465,7 @@
 		/**
 		 * This class show String compareTo examples
 		 * @param args
-		 */
+		 * ***/
 		public static void main(String[] args) {
 			String str = "ABC";
 			System.out.println(str.compareTo("DEF"));
@@ -237,9 +498,9 @@
 -	It returns a negative integer with the difference between them, hence output is -3
 -	If we compare “AABC” with “ADBC”, then also we will get the same output as -3
 
+----------------------------------------------------------------
 
-
-### Question #8. How to convert String to char and vice versa?
+### Question: How to convert String to char and vice versa?
 
 -	This is a tricky question because String is a sequence of characters
 -	So we can’t convert it to a single character
@@ -276,10 +537,10 @@
 			The Great
 
 
+----------------------------------------------------------------
 
 
-
-### Question #9.	How to convert String to byte array and vice versa?
+### Question: How to convert String to byte array and vice versa?
 
 -	We can use String getBytes() method to convert String to byte array 
 -	We can use String constructor new String(byte[] arr) to convert byte array to String
@@ -320,8 +581,8 @@
 			BHARATH
 			BHARATH
 		
-		
-### Question #10. Can we use String in switch case?
+-----------------------------------------------------------		
+### Question: Can we use String in switch case?
 
 -	Yes, we can use String in Switch
 -	From, Java 7 ... yes we can use
@@ -355,12 +616,10 @@
 	
 		   Defalut and Switch is Case Sensitive
 
-		
-### Question #11.	Write a program to print all permutations of String?
+----------------------------------------------------------------		
 
-### Question #12.	Write a function to find out longest palindrome in a given string?
 
-### Question #13.	Difference between String, StringBuffer and StringBuilder?
+### Question: Difference between String, StringBuffer and StringBuilder?
 
 -	String is immutable and final in Java
 -	String manipulations are resource consuming
@@ -417,8 +676,9 @@
 
 	-	For String manipulations in non-multi threaded environment, we should use StringBuilder or else we can use StringBuffer class
 
+----------------------------------------------------------------
 
-### Question #14. Why String is immutable or final in Java
+### Question: Why String is immutable or final in Java
 
 
 -	String Pool is possible because String is immutable in Java
@@ -462,9 +722,9 @@
 	
 	-   If String would not have been immutable, then String interning would not have been possible 
 	-	Because if any variable would have changed the value, it would have been reflected to other variables also
-	
+----------------------------------------------------------------	
 
-### Question #15.	How to Split String in Java?
+### Question: How to Split String in Java?
 
 -	We can use split(String regex) to split the String into String array
 - 	public String[] split(String regex): split() method is used to split the string based on the given regular expression
@@ -506,9 +766,9 @@
 		
 		Arrays.asList(stringArray).stream().forEach(System.out::println);
 		
-	
+----------------------------------------------------------------
 
-### Question #16.	Why Char array is preferred over String for storing password?
+### Question: Why Char array is preferred over String for storing password?
 
 -	String is immutable in Java and Stored in String pool
 -	Once it’s created it stays in the pool until unless garbage collected 
@@ -518,7 +778,9 @@
 -	If we use a char array to store password, we can set it to blank once we are done with it
 -	So we can control for how long it’s available in memory that avoids the security threat with String
 
-### Question #17. How do you check if two Strings are equal in Java?
+----------------------------------------------------------------
+
+### Question: How do you check if two Strings are equal in Java?
 
 -	There are two ways to check if two Strings are equal or not – using “==” operator or using equals method
 -	When we use “==” operator, it checks for the reference but in our programming
@@ -535,16 +797,26 @@
         System.out.println("s1 == s2 ? "+(s1==s2)); //true
         System.out.println("s1 == s3 ? "+(s1==s3)); //false
         System.out.println("s1 equals s3 ? "+(s1.equals(s3))); //true
-
+----------------------------------------------------------------
 		
-### Question #18. What is String Pool?
-			
--	String Pool is a pool of Strings stored in Java Heap Memory
--   We know that String is a special class in Java
--	We can create String object using new operator as well as providing values in double quotes
--	String Pool is possible only because of immutable and it’s implementation of String interning concept
--	String pool is also example of Flyweight design pattern
--	String pool helps in saving a lot of space for Java Runtime although it takes more time to create the String
+### Question: What is String Pool?
+
+-	String Pool is a pool of Strings stored in Java Heap Memory.
+-	String objects are most used data objects in Java.
+-	Hence, java has a special arrangement to store the string objects.
+-	String Constant Pool is one such arrangement. 
+-	String Constant Pool is the memory space in heap memory specially allocated to store the string objects created using string literals.
+-	In String Constant Pool, there will be no two string objects having the same content.
+
+-	Whenever we create a string object using string literal, JVM first checks the content of the object to be created.
+-	If there exist an object in the string constant pool with the same content, then it returns the reference of that object.
+-	It doesn’t create a new object. If the content is different from the existing objects then only it creates new object.
+
+-	String Pool is possible only because of immutable and it’s implementation of String interning concept.
+-	String pool is also example of Flyweight design pattern.
+-	String pool helps in saving a lot of space for Java Runtime although it takes more time to create the String.
+-	We can create String object using new operator as well as providing values in double quotes.
+
 -	Using double quotes to create a String
 
 	- 	It first looks for String with same value in the String pool
@@ -563,7 +835,7 @@
 			/**
 			 * Java String Pool example
 			 * @param args
-			 */
+			 * ***/
 			public static void main(String[] args) {
 				String s1 = "Cat";
 				String s2 = "Cat";
@@ -582,9 +854,9 @@
 
 	-	Two Objects will created one in heap and another in Pool
 
+----------------------------------------------------------------
 
-
-### Question #19. What does String intern() method do?
+### Question: What does String intern() method do?
 
 -	When the intern method is invoked
 
@@ -593,22 +865,25 @@
 	-	Otherwise, this String object is added to the pool and a reference to this String object is returned
 	-	This method always returns a String that has the same contents as this string but is guaranteed to be from a pool of unique strings
 
+----------------------------------------------------------------
 
-### Question #20. Does String is thread-safe in Java?
+### Question: Does String is thread-safe in Java?
 
 -	Strings are immutable, so we can’t change it’s value in program
 -	Hence it’s thread-safe and can be safely used in multi-threaded environment
 
+----------------------------------------------------------------
 
-### Question #21. Why String is popular HashMap key in Java?
+### Question: Why String is popular HashMap key in Java?
 
 -	Since String is immutable, its hashcode is cached at the time of creation and it doesn’t need to be calculated again
 -	This makes it a great candidate for the key in a Map 
 -	And it’s processing is fast than other HashMap key objects
 -	This is why String is mostly used Object as HashMap keys 
 
+----------------------------------------------------------------
 
-### Question #22. Thread Safety in Java
+### Question: Thread Safety in Java
 
 -	Multiple threads created from same Object, share  same Object Variables 
 -	When Threads are used to Read and Update the shared data, this can lead to Data Inconsistency
@@ -656,7 +931,7 @@
 			private void processSomething(int i) {
 				// processing some job
 				try {
-					Thread.sleep(i*1000);
+					Thread.sleep(i*/*1000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -672,13 +947,44 @@
 	3.	AtomicWrapper Classes from java.util.concurrent.atomic package
 	4.	Using Thread Safe Collection Classes like ConcurrentHashMap, ArrayBlockingQueue, CopyOnWriteArrayList
 	5.	Using volatile keyword with variable to make sure every read operation is from memory and not from Thread Cache
+----------------------------------------------------
+
+### Question: Exploring java.lang.String Class : Character Extraction	
+
+
+-	Below are some methods which are used to extract characters from a string object.
+
+####	charAt() Method :
 	
+		public char charAt(int index)
+		
+		
+	-	Where index must be between 0 and length() – 1
+	-	This method will throw StringIndexOutOfBoundsException if index passed is negative or not less than the length of the string
+
+####	getChars() Method:
+
+		public void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)
+
+	-	This method copies characters of a string object starting from ‘srcBegin’ to ‘srcEnd’ into character array ‘dst’ at the index ‘dstBegin’ 
+	-	This method will also throw StringIndexOutOfBoundsException if ‘srcBegin’ or ‘srcEnd’ are not between 0 and length() – 1 
+	-	Or if characters extracted does not fit into destination array
 	
+####	toCharArray() Method :
 
+		public char[] toCharArray()	
 
---------------------------------------------
+	-	This method converts whole string into a character array
+	-	Below is the signature of this method
 
+####	subString() Method
 
-
-
+		public String substring(int beginIndex)
 	
+	-	This form returns sub string starting from ‘beginIndex’ to the end of the specified string
+	
+		public String substring(int beginIndex, int endIndex)	
+	
+	-	This form returns sub string starting from ‘beginIndex’ to ‘endIndex’ of the specified string
+	
+----------------------------------------------------
