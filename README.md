@@ -205,7 +205,13 @@
 -	That provides more logical comparison of two string objects
 -	If we use “==” operator, it checks only references of two objects are equal or not
 -	It may not be suitable in all situations
+----------------------------------------------------------------
 
+### How to perform Deep Copy for String?
+
+-	String is immutable
+-	No needs to worry about deep or shallow copy
+-	We can simply use assignment operator (=) to copy one string to another
 
 ----------------------------------------------------------------	
 ### Question: Where exactly string constant pool is located in the memory?
@@ -988,3 +994,21 @@
 	-	This form returns sub string starting from ‘beginIndex’ to ‘endIndex’ of the specified string
 	
 ----------------------------------------------------
+### Question:  What is Character Encoding? Explain the difference between UTF-16 and UTF-8?
+
+-	Character Encoding means representing Characters using Bytes
+-	When you want to represent Character using bytes, character encoding is used
+-	The UTF-16 uses 2 bytes or 16 bits to represent a character while UTF-8 uses 1 byte or 8 bits to represent a character
+----------------------------------------------------
+ How does substring() method works in java?
+ https://javarevisited.blogspot.com/2011/10/how-substring-in-java-works.html
+ http://www.codenuclear.com/how-substring-works-internally-java/
+ 
+ Remove Specific Characters From String With Example
+ How To Convert Signed Integer To String In Java With Example
+ Change UpperCase To LowerCase And Lowercase To Uppercase Of All The Characters In The String Without Using Built In Java
+ Find All Possible Combinations Of String In Java : Code With Example
+ Find The All Possible Permutations Of The Given String : Java Program Code
+ 5 Ways To Determine If String Has All Unique Characters : Java Code With Example
+ 
+ https://howtodoinjava.com/java/string/left-pad-string-with-spaces-zeros/
