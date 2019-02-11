@@ -4,26 +4,27 @@
 --------------------------------------------------------
 ## Duplicate Frequency:
 
-How do you find duplicate characters in a string?
+## How do you find duplicate characters in a string?
 
+	Code Snippet:
+ 
+		public class StringDuplicates {
 
-public class StringDuplicates {
+			public static void main(String[] args) {
 
-	public static void main(String[] args) {
+				String string = "JavaJ2EE";
 
-		String string = "JavaJ2EE";
+				 List<Entry<String, Long>> collect = string.chars()
+						.mapToObj(c -> Character.toString((char) c))
+						.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+						.entrySet().stream()
+						.filter(m -> m.getValue() > 1)
+						.collect(Collectors.toList());
+				 
+				 System.out.println(collect);
+			}
 
-		 List<Entry<String, Long>> collect = string.chars()
-				.mapToObj(c -> Character.toString((char) c))
-				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
-				.entrySet().stream()
-				.filter(m -> m.getValue() > 1)
-				.collect(Collectors.toList());
-		 
-		 System.out.println(collect);
-	}
-
-}
+		}
 --------------------------------------------------------
 
 ## How to get distinct characters and their count in a String?
