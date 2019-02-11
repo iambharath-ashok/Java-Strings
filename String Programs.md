@@ -1,14 +1,9 @@
 # Java String Programs
 
 
-Write a program to print all permutations of String?
-Write a function to find out longest palindrome in a given string?
-Write a Java program to reverse a String?
-How to check if a String is Palindrome?
-Write a java program to count the number of words in a string?
-
 --------------------------------------------------------
 ## Duplicate Frequency:
+
 How do you find duplicate characters in a string?
 
 
@@ -31,7 +26,7 @@ public class StringDuplicates {
 }
 --------------------------------------------------------
 
-### How to get distinct characters and their count in a String?
+## How to get distinct characters and their count in a String?
 
 	Code Snippet:
 		 
@@ -92,7 +87,7 @@ public class StringDuplicates {
 
 --------------------------------------------------------
 	
-How to prove String is immutable programatically?
+## How to prove String is immutable programatically?
 
 	Code Snippet:
 	
@@ -120,14 +115,15 @@ How to prove String is immutable programatically?
 			
 		}
 --------------------------------------------------------
-Write a program to count number of words in a String?
+## Write a program to count number of words in a String?
 
 	Code Snippet:
 	
 		
 --------------------------------------------------------
-Write a program to check if two Strings are created with same characters?
-Write Java Program To Check Whether Two Strings Are Anagram Or Not?
+## Write a program to check if two Strings are created with same characters?
+
+## Write Java Program To Check Whether Two Strings Are Anagram Or Not?
 
 	Code Snippet:
 	
@@ -139,7 +135,7 @@ Write Java Program To Check Whether Two Strings Are Anagram Or Not?
 			return cleanedString;
 		}
 --------------------------------------------------------
-How to find whether String contains given String or Not?
+## How to find whether String contains given String or Not?
 	
 	Code Snippet:
 	
@@ -148,7 +144,7 @@ How to find whether String contains given String or Not?
 		}
 		
 -------------------------------------------------------
-How to swap two Strings without using a third variable?
+## How to swap two Strings without using a third variable?
 
 	Code Snippet:
 	
@@ -162,7 +158,7 @@ How to swap two Strings without using a third variable?
 		System.out.println("String 1:"+str1);
 		System.out.println("String 2:"+str2);
 --------------------------------------------------------		
-Provide two ways to check if a String contains only digits?
+## Provide two ways to check if a String contains only digits?
 
 	Code Snippet:
 
@@ -180,7 +176,7 @@ Provide two ways to check if a String contains only digits?
 				}
 			}
 --------------------------------------------------------
-How do you remove all white spaces from a String in Java?
+## How do you remove all white spaces from a String in Java?
 
 	Code Snippet:
 		
@@ -212,7 +208,7 @@ How do you remove all white spaces from a String in Java?
 	
 	
 --------------------------------------------------------
-Write a java program to reverse a given string with preserving the position of spaces?
+## Write a java program to reverse a given string with preserving the position of spaces?
 	
 	Code Snippet:
 	
@@ -260,7 +256,7 @@ Write a java program to reverse a given string with preserving the position of s
 		}
 		
 --------------------------------------------------------
-How To Convert String To Integer In Java?
+## How To Convert String To Integer In Java?
 
 -	There are two methods available in java to convert string to integer
 -	One is Integer.parseInt() method and another one is Integer.valueOf() method
@@ -289,7 +285,7 @@ How To Convert String To Integer In Java?
 
 		
 -------------------------------------------------
-Write a Java program to reverse each word of a given string?
+## Write a Java program to reverse each word of a given string?
 
 	Algorithm :
 	
@@ -341,8 +337,7 @@ Write a Java program to reverse each word of a given string?
 			return reverseString.toString();
 		}
 ----------------------------------------
-		
-Write a code to check whether one string is a rotation of another?
+## Write a code to check whether one string is a rotation of another?
 	
 	Algorithm:
 	
@@ -384,7 +379,7 @@ Write a code to check whether one string is a rotation of another?
 			}
 		}
 --------------------------------------------------------------
-Write a java program to count the total number of occurrences of a given character in a string without using any loop?
+## Write a java program to count the total number of occurrences of a given character in a string without using any loop?
 
 	
 	Code Snippet 1: 
@@ -408,7 +403,7 @@ Write a java program to count the total number of occurrences of a given charact
 					// Total - Total without  char
 --------------------------------------------------------------------
 
-18) How do you find first repeated and non-repeated character in the given string in java?
+## How do you find first repeated and non-repeated character in the given string in java?
 
 	Algorithm:
 		Step 1 : Define one HashMap called charCountMap with Character as key and Integer as value. This map will hold the characters and their count in the given string.
@@ -451,7 +446,7 @@ Write a java program to count the total number of occurrences of a given charact
 		}
 	
 ---------------------------------------------------------------------
-19) Write a Java program to append a given string to a text file?
+## Write a Java program to append a given string to a text file?
 
 -	FileWritter needs to open in Append mode
 -	By default FileWriter will open the file in overwriting mode 
@@ -490,7 +485,7 @@ Write a java program to count the total number of occurrences of a given charact
 		
 --------------------------------------------------------------		
 		
-20) How do you find the number of characters, words and lines in the given text file in Java?
+## How do you find the number of characters, words and lines in the given text file in Java?
 	
 	
 	Algorithm:
@@ -552,7 +547,7 @@ Write a java program to count the total number of occurrences of a given charact
 		}
 --------------------------------------------------------------
 		
-21) How do you find the most repeated word in a text file in java?
+## How do you find the most repeated word in a text file in java?
 
 	Code Snippet:
 	
@@ -639,7 +634,7 @@ Write a java program to count the total number of occurrences of a given charact
 
 --------------------------------------------------------------
 
-22.	Program to count vowels and consonants in String
+##	Program to count vowels and consonants in String
 
 	Code Snippet:
 	
@@ -664,18 +659,9 @@ Write a java program to count the total number of occurrences of a given charact
 		}
 
 
---------------------------------------------------------------
-
-
-
-
--------------------------------------------------------------------
-15) How to convert String to Date in java?
-16) How to Optimize Java String Creation?
-18) Java program to find the percentage of uppercase, lowercase, digits and special characters in a String
 
 ----------------------------------------------------------------
-How to sort String on their length in Java? (solution)
+## How to sort String on their length in Java? (solution)
 
 	Code Snippet:
 	
@@ -699,8 +685,9 @@ How to sort String on their length in Java? (solution)
 
 
 ---------------------------------------------------------------
-Write a program to check if a String contains another String e.g. indexOf()?
-How to check if a String is valid shuffle of two String?
+
+
+## How to check if a String is valid shuffle of two String?
 	
 	
 	private static boolean isInterleaved(String str1, String str2, String strToCheck) {
@@ -732,15 +719,46 @@ How to check if a String is valid shuffle of two String?
 	  return true;
 	 }
 
+---------------------------------------------------------------
+## How to convert an Array to String in Java
+	
+	Code Snippet:
+	
+		public static String arrayToString(Sting [] array, String delimiter) {
+			
+			String string = Arrays.asList(array).collect(Collectors.joining(delimiter));
+			return string;
+			
+			// Second Way is to using StringJoiner
+			
+			public static void main(String[] args) {
+				String[] currencies = {"USD", "INR", "AUD", "GBP"};
+			
+				StringJoiner sj = new StringJoiner("");
+				for (String curr: currencies) {
+					sj.add(curr);
+				}
+				return sj.toString();
+				
+				
+				// Third Way 
+				StringBuilder sb = new StringBuilder(); 
+					for (String s : array) { sb.append(s).append(delimiter); } 
+				result = sb.deleteCharAt(sb.length() - 1).toString();
+				return result;
+			}	
+		}
+---------------------------------------------------------------
 
-
-
-
-
-
-
-
-
+## How to convert String to Date in java?
+## How to Optimize Java String Creation?
+## Java program to find the percentage of uppercase, lowercase, digits and special characters in a String
+## Write a program to check if a String contains another String e.g. indexOf()?
+## Write a program to print all permutations of String?
+## Write a function to find out longest palindrome in a given string?
+## Write a Java program to reverse a String?
+## How to check if a String is Palindrome?
+## Write a java program to count the number of words in a string?
 
 
 
