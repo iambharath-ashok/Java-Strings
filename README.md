@@ -997,8 +997,9 @@
 ### Question:  What is Character Encoding? Explain the difference between UTF-16 and UTF-8?
 
 -	Character Encoding means representing Characters using Bytes
--	When you want to represent Character using bytes, character encoding is used
+-	When we want to represent Character using bytes, character encoding is used
 -	The UTF-16 uses 2 bytes or 16 bits to represent a character while UTF-8 uses 1 byte or 8 bits to represent a character
+-	Using UTF-16 in Java, Java is able to handle are languages of Earth
 ----------------------------------------------------
  How does substring() method works in java?
  https://javarevisited.blogspot.com/2011/10/how-substring-in-java-works.html
@@ -1012,3 +1013,30 @@
  5 Ways To Determine If String Has All Unique Characters : Java Code With Example
  
  https://howtodoinjava.com/java/string/left-pad-string-with-spaces-zeros/
+ 
+-------------------------------------------------------------------
+### Are Array thread safe in Java?
+
+-	Reading from Array is Thread Safe but writing is not Thread Safe 
+
+-------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
