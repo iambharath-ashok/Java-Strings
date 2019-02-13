@@ -2,9 +2,26 @@
 
 
 --------------------------------------------------------
+## How to Print duplicate characters from String?
+
+-	Given a word Java printDuplicate Method should print 'a'
+
+
+	Code Snippet:
+	
+		public static void printRepeated(String s) {
+			Set<Character> set = new HashSet<>();
+			for (char ch : s.toCharArray()) {
+				if(!set.add(ch)) {
+					System.out.print(ch);
+				}
+			}
+		}
+---------------------------------------------------------
+
 ## Duplicate Frequency:
 
-## How do you find duplicate characters in a string?
+## How do we find duplicate characters in a string?
 
 	Code Snippet:
  
@@ -76,8 +93,7 @@
 		}	
 --------------------------------------------------------
 
-### How to remove all occurrences of a given character from input String?
-
+### How to remove all occurrences of a given character from input String? or Write a program to remove a given characters from String? 
 
 	Code Snippet:
 
@@ -122,19 +138,49 @@
 	
 		
 --------------------------------------------------------
-## Write a program to check if two Strings are created with same characters?
 
-## Write Java Program To Check Whether Two Strings Are Anagram Or Not?
+## Write a program to check if two Strings are created with same characters? or  Write Java Program To Check Whether Two Strings Are Anagram Or Not?
+
+### What is Anagram:
+
+-	Two are considered Anagram if they contains same set of characters with same count
+
+	### Algorithm:
+		
+	-	Remove all special Characters including spaces
+	-	Lower case all the Characters
+	-	
 
 	Code Snippet:
 	
-		public static String getUniqueCharString(String s1) {
-			String cleanedString = s1.toLowerCase().chars().mapToObj(c -> (char)c)
-			.map(c -> String.valueOf(c))
-			.collect(Collectors.toCollection(TreeSet::new))
-			.stream().collect(Collectors.joining(""));
-			return cleanedString;
+		Spublic class AnagramRegularExpression {
+
+			public static boolean isAnagram(String s1, String s2) {
+				s1 = cleanString(s1);
+				s2 = cleanString(s2);
+				return s1.equals(s2);
+			}
+
+			private static String cleanString(String s) {
+				s = s.toLowerCase().replaceAll("[^\\w][^\\s]", "");
+				s = s.chars().mapToObj(ch -> Character.toString((char) ch)).sorted(Comparator.naturalOrder())
+						.collect(Collectors.joining(""));
+				return s;
+			}
+
+			public static void main(String[] args) {
+				boolean isAnagram = isAnagram("aajv", "java");
+				System.out.println(isAnagram);
+			}
+
 		}
+	
+	Output:
+	
+		eeehhllort
+		eeehhllort
+		true
+
 --------------------------------------------------------
 ## How to find whether String contains given String or Not?
 	
@@ -153,11 +199,18 @@
 		String str2 = "xyz";
 		
 		str1 = str1.concat(str2);
-		str2 = str1.substring(0,str1.length()- str2.length());
+		str2 = str1.substring(0,str1.length()- str2.length()); // Begin Index Inclusive and End Index is Exclusive
 		str1 = str1.substring(str2.length()); // Begin Index
 		
 		System.out.println("String 1:"+str1);
 		System.out.println("String 2:"+str2);
+		
+		public static void swap(String s1, String s2) {
+			s1 = s1.concat(s2);
+			s2 = s1.substring(0, s1.length() - s2.length());
+			s1 = s1.substring(s2.length(), s1.length());
+			System.out.println(s1 + " " + s2);
+		}
 --------------------------------------------------------		
 ## Provide two ways to check if a String contains only digits?
 
@@ -166,7 +219,7 @@
 			public static boolean containsOnlyDigits(String string) {
 			
 				// First Way:
-				string.matches("\\d+");
+				return string.matches("\\d+");
 				
 				//Second Way:	
 				try {
@@ -177,7 +230,7 @@
 				}
 			}
 --------------------------------------------------------
-## How do you remove all white spaces from a String in Java?
+## How do we remove all white spaces from a String in Java?
 
 	Code Snippet:
 		
@@ -209,7 +262,19 @@
 	
 	
 --------------------------------------------------------
-## Write a java program to reverse a given string with preserving the position of spaces?
+## Write a Java program to reverse a given string with preserving the position of spaces?
+
+
+	Algorithm:
+
+		1. 	Create a result array
+		2.	Copy all Spaces to Result Array or Maintain Spaces exactly in the same position
+		3.	Assign last index  to temp variable j 
+		4.	Start from starting of original array and copy it to result array in reverse order
+		5.	If char at original array is not equal to ' ' then assign that char to result array
+		6.	If result array has ' ' with it decrement it next position
+		
+		
 	
 	Code Snippet:
 	
@@ -252,12 +317,11 @@
 			}
 			String string = String.valueOf(resultArray);
 			System.out.println(string);
-			
-		
 		}
 		
 --------------------------------------------------------
-## How To Convert String To Integer In Java?
+## How To Convert String To Integer In Java? or How to convert numeric String to an int?
+
 
 -	There are two methods available in java to convert string to integer
 -	One is Integer.parseInt() method and another one is Integer.valueOf() method
@@ -273,7 +337,7 @@
         int i = Integer.parseInt(s);
 		
 		String s = "2015";
-		int i = Integer.valueOf(s);	
+		Integer i = Integer.valueOf(s);	
 
 - 	One is Integer.toString() method and another one is String.valueOf() method
 -	Both these methods return string representation of the given integer
@@ -337,6 +401,24 @@
 			}
 			return reverseString.toString();
 		}
+		
+		
+	Code Snippet of 3rd Method:
+
+		public static String reverseEachWord(String s) {
+		
+			String[] words = s.split("\\s+");
+			StringBuilder result = new StringBuilder();
+			
+			for(String word : words) {
+				StringBuilder reverseWord = new StringBuilder(word);
+				result.append(reverseWord.reverse().append(" "));
+			}
+			result.deleteCharAt(result.length() - 1);
+			
+			
+			return result.toString();
+		}
 ----------------------------------------
 ## Write a code to check whether one string is a rotation of another?
 	
@@ -380,8 +462,7 @@
 			}
 		}
 --------------------------------------------------------------
-## Write a java program to count the total number of occurrences of a given character in a string without using any loop?
-
+## Write a Java program to count the total number of occurrences of a given character in a string without using any loop? or How to count occurrence of a given character in String?
 	
 	Code Snippet 1: 
 		
@@ -403,8 +484,7 @@
         int count = s.length() - s.replace("a", "").length();
 					// Total - Total without  char
 --------------------------------------------------------------------
-
-## How do you find first repeated and non-repeated character in the given string in java?
+## How do we find first repeated and non-repeated character in the given string in Java?
 
 	Algorithm:
 		Step 1 : Define one HashMap called charCountMap with Character as key and Integer as value. This map will hold the characters and their count in the given string.
@@ -482,11 +562,29 @@
 		
 	
 
-			
+		Code Snippet:
+
+			public static void appendString(String s, String fileName) {
+
+				try {
+					FileWriter fw = new FileWriter(new File(fileName), true);
+					BufferedWriter bw = new BufferedWriter(fw);
+					bw.write(s);
+					bw.flush();
+					bw.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+			}
+
+			public static void main(String[] args) {
+				appendString("Bharath", "Guru.txt");
+			}
 		
 --------------------------------------------------------------		
 		
-## How do you find the number of characters, words and lines in the given text file in Java?
+## How do we find the number of characters, words and lines in the given text file in Java?
 	
 	
 	Algorithm:
@@ -546,9 +644,8 @@
 				e.printStackTrace();
 			}
 		}
---------------------------------------------------------------
-		
-## How do you find the most repeated word in a text file in java?
+--------------------------------------------------------------	
+## How do we find the most repeated word in a text file in java?
 
 	Code Snippet:
 	
@@ -662,7 +759,7 @@
 
 
 ----------------------------------------------------------------
-## How to sort String on their length in Java? (solution)
+## How to sort String on their length in Java?
 
 	Code Snippet:
 	
@@ -678,19 +775,40 @@
 			public static List<String> getSortedStringList(String string) {
 				List<String> asList = Arrays.asList(string.split("\\s+"));
 				
-				List<String> collect1 =  asList.stream().sorted((s1, s2) -> Integer.compare(s1.length(), s2.length())).collect(Collectors.toList());
-				List<String> collect2 = asList.stream().sorted(Comparator.comparingInt(String::length)).collect(Collectors.toList());
+				List<String> collect1 =  asList.stream().sorted((s1, s2) -> Integer.compare(s1.length(), s2.length())).collect(Collectors.toList()); // First Way
+				
+				// Second Way
+				List<String> collect2 = asList.stream().sorted(Comparator.comparingInt(String::length)).collect(Collectors.toList()); 
+				// Third Way
 				Arrays.sort(randomString, (s1,s2) -> Integer.compare(s2.length(), s1.length()));
+				
 				return collect2;
 			}
 
 
 ---------------------------------------------------------------
+## How to check if a String is valid shuffle of two String? or Write a program to give String is Interleaving of other two Strings?
 
 
-## How to check if a String is valid shuffle of two String?
+-	Problem: Given a string 's' and two candidate strings 's1' and 's2'
+-	Find if 's' is formed by interleaving of 's1' and 's2'
+-	Interleaving is defined as formed by picking characters randomly from s1 and s2 but preserving the order of characters in s1 and s2
+
+-	Example: If s1 = 'ABC' and s2 = 'def', then 'AdBeCf' is an interleaved string.
+-	'ABCdef' is also an interleaved string and so is 'ABdeCf'.
+-	'AdefCB' is not an interleaved string because the order of 'BC' is not maintained.
+
+	### Algorithm:
 	
+	-	Check if s1 + s2 = s3, if not return false
+	-	Initialize the values of i, j , k to keep track index and length
+	-	while till ending length of s3 
+	-	check if s1 and s2 follows the order in s3
+	-	s3 contains out of scope letter then return false
+	-	check if i , j , k equals the length of string
 	
+	-	Time Complexity : O(n)
+		
 	private static boolean isInterleaved(String str1, String str2, String strToCheck) {
    
 	  int i=0, j=0, k=0;
@@ -750,31 +868,568 @@
 			}	
 		}
 ---------------------------------------------------------------
-
-## How to convert String to Date in java?
-## How to Optimize Java String Creation?
-## Java program to find the percentage of uppercase, lowercase, digits and special characters in a String
-## Write a program to check if a String contains another String e.g. indexOf()?
-## Write a program to print all permutations of String?
-## Write a function to find out longest palindrome in a given string?
-## Write a Java program to reverse a String?
-## How to check if a String is Palindrome?
 ## Write a java program to count the number of words in a string?
 
+	Code Snippet:
+	
+		String [] words = string.split("\\s+");
+		return words.length;
+		
+--------------------------------------------------------------------		
+## How to convert String to Date in java?
+
+	Code Snippet:
+	
+		public class DateToString {
+	
+			public static void dateToString() {
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
+				LocalDate date = LocalDate.now();
+				String dateString = date.format(dtf);
+				System.out.println(dateString);
+			}
+			
+			public static void stringToDate() {
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MMM-yy");
+				String stringDate = "09-Feb-18";
+				LocalDate parsedDate = LocalDate.parse(stringDate,dtf);
+				System.out.println(parsedDate);
+			}
+			
+			public static void main(String[] args) {
+				dateToString();
+				stringToDate();
+			}
+
+		}
+
+--------------------------------------------------------------------
+		
+## Java program to find the percentage of uppercase, lowercase, digits and special characters in a String?
 
 
+	Code Snippet:
+		
+		public class CharctersPercentage {
+
+			public static void findPercentage(String s) {
+
+				int consonants = 0, digits = 0, upperCase = 0, lowerCase = 0, vowels = 0, specialChar = 0,
+						totalChars = s.length();
+				List<String> vowelsList = new ArrayList<>(Arrays.asList("a", "e", "o", "i", "u", "A", "E", "O", "I", "U"));
+
+				for (char ch : s.toCharArray()) {
+					if (vowelsList.contains(Character.toString(ch)))
+						vowels++;
+					else if (Character.isLetter(ch))
+						consonants++;
+					if (Character.isUpperCase(ch))
+						upperCase++;
+					else if (Character.isLowerCase(ch))
+						lowerCase++;
+					else if (Character.isDigit(ch))
+						digits++;
+					else
+						specialChar++;
+				}
+
+				System.out.println("Upper Case Per: " + (float) upperCase * 100 / totalChars);
+				System.out.println("Lower Case Per: " + (float) lowerCase * 100 / totalChars);
+				System.out.println("special Chars Per: " + (float) specialChar * 100 / totalChars);
+				System.out.println("Digits Per: " + (float) digits * 100 / totalChars);
+				System.out.println("Vowels Per: " + (float) vowels *  100 / totalChars);
+				System.out.println("consonants Per: " + (float) consonants * 100 / totalChars);
+
+			}
+
+			public static void main(String[] args) {
+				findPercentage("India ");
+			}
+
+		}
 
 
+---------------------------------------------------------------
+## Write a program to check if a String contains another String e.g. indexOf()?
+
+-	we need to write a function to search for the existence of a string (target) in another string (source)
+-   The function takes two strings as the input and returns the index where the second string is found
+-	If the target string cannot be found, then return -1
+-	We can related its behavior to indexOf() method from java.lang.String class
+-	This question is also asked as Code and algorithm to check if a given short string is a substring of a main string
+-	Get a linear solution (O(n)) if possible?
+
+-	Use int indexOf(String)
+-	Use int lastIndexOf(String)
+-	Use boolean contains(String) 
+	
+	Code Snippet:
+	
+		String input = "Java is the best programming language"; 
+		boolean isPresent = input.indexOf("Java") != -1 ? true : false;
+		isPresent = input.indexOf("java") != -1 ? true : false;
+		boolean isFound = input.contains("Java");
+
+		
+		
+-------------------------------------------------------------------
+## Write a program to print all permutations of String?
+
+	Code Snippet:
+	
+		public class PermutationOfString {
+
+			public static void printPermutation(String s) {
+				permutation("", s);
+			}
+
+			public static void permutation(String permutation, String input) {
+				if (input.length() == 0) {
+					System.out.println(permutation);
+				} else {
+					for (int i = 0; i < input.length(); i++) {
+						permutation(permutation + input.charAt(i),
+								input.substring(0, i) + input.substring(i + 1, input.length()));
+					}
+				}
+			}
+			
+			public static void main(String[] args) {
+				printPermutation("Bharath");
+			}
+
+		}
+-----------------------------------------------------------		
+## Write a function to find out longest palindrome in a given string?
+
+	Code Snippet:
+	
+		public class PalDemo {
+
+			public static void main(String[] args) {
+				PalDemo pd = new PalDemo();
+				
+				String pal = pd.findLongestPalindrome("bananas");
+				System.out.println("" + pal);
+				
+				pal = pd.findLongestPalindrome("abaradar121");
+				System.out.println("" + pal);
+
+			}
+			
+			public String findLongestPalindrome(String s) {
+				// Validations
+				if (s.isEmpty()) {
+					return "Please enter a String";
+				}
+			
+				if (s.length() == 1) {
+					return s;
+				}
+				// Validations end
+				// Start with one char (starting) as a longest palindrome
+				String longest = s.substring(0, 1);
+				for (int i = 0; i < s.length(); i = i+1) {
+					
+					// get longest palindrome for odd length (center is i)
+					String tmp = checkForEquality(s, i, i);
+					if (tmp.length() > longest.length()) {
+						longest = tmp;
+					}
+			
+					// get longest palindrome for even length (center is i, i+1)
+					tmp = checkForEquality(s, i, i + 1);
+					if (tmp.length() > longest.length()) {
+						longest = tmp;
+					}
+				}
+			
+				return longest;
+			}
+			
+			
+			/**
+			 * In this method equality is checked starting from
+			 * the center moving one character left and one character
+			 * right from the center. If both chars are equal then the
+			 * next set of chars are checked.  
+			 *     
+			 */
+			public String checkForEquality(String s, int begin, int end) {
+				while (begin >= 0 && end <= s.length() - 1 && s.charAt(begin) == s.charAt(end)) {
+					begin--;
+					end++;
+				}
+				return s.substring(begin + 1, end);    
+			}
+		}
+
+---------------------------------------------------------------
+
+## Write a Java program to reverse a String?
+
+	Code Snippet:
+	
+		public class ReverseRecursive {
+	
+	
+			static String  reverseString = "";
+			public static String reverseRecursive(String s) {
+				if(s.isEmpty()) {
+					return s;
+				}
+				System.out.println(s.substring(1));
+				return reverseRecursive(s.substring(1)) + s.charAt(0);
+			}
+			
+			public static void main(String[] args) {
+				reverseRecursive("abcdefghij");
+			}
+
+		}
+
+	Order Of Algorithm :
+	
+		Time complexity: O(n)
+------------------------------------------------
+## How to Reverse a String using Iterative method?
+
+	Code Snippet:
+	
+		public static String reverString (String s) {
+			String reverseString = "";
+			for(int j = s.length() -1; j >= 0; j--) {
+				reverseString += s.charAt(j);
+			}
+			System.out.println(reverseString);
+			return reverseString;
+		}
+	
+	Order of Algorithm:
+	
+		Time Complexity : O(n)
+
+------------------------------------------------
+		
+## How to check if a String is Palindrome?
 
 
+	Code Snippet:
+	
+		public static boolean isPalindrome(String s) {
+			for(int i = 0, j= s.length() -1; i < s.length()/2; j--,i++) {
+				if(s.charAt(i) == s.charAt(j)) {
+					continue;
+				} else {
+					return false;
+				}
+			}
+			return true;
+		}
+		
+	Order of Algorithm:
+
+		Time Complexity: O(log n)
+------------------------------------------------
+## How to find duplicate characters in a String?
+
+-	Given String is "Programming" then wer program should print
+	
+		g : 2
+		r : 2
+		m : 2
+
+-	Sol: User Java 8 or Create Character Count Map 
+
+---------------------------------------------------
+
+## How to replace each given character to other e.g. blank with %20?
+
+-	For example if the input is "Java is Great" and asked to replace space with %20 then it should be "Java%20is%20Great".
+
+	
+	Code Snippet:
+	
+		public class ReplaceCharWithString {
+	
+			public static String replaceChar(String s, String charToReplace, String replacingChar) {
+				s= s.replaceAll(charToReplace, replacingChar);
+				return s;
+			}
+			
+			public static void main(String[] args) {
+				String replacedString = replaceChar("Java is Great","\\s+","%20");
+				System.out.println(replacedString);
+			}
+		}
+-----------------------------------------------------------
+
+## How  to return highest occurred character in a String? or Find Most Repeated Characters?
+
+	Code Snippet:
+	
+		public class MostRepeatedChars {
+
+			public static void main(String[] args) {
+				String string = "accccddddeeeeeffff";
+				
+				// Using Java 8 
+				Entry<Character, Long> entry = string.chars().mapToObj(ch -> (char) ch)
+						.collect(Collectors.groupingBy(Function.identity(), Collectors.counting())).entrySet().stream()
+						.sorted(Entry.<Character, Long>comparingByValue().reversed()).findFirst().orElseGet(null);
+
+				System.out.println(entry);
+
+				
+				// Using Map with Character Counting
+				Map<Character, Integer> map = new HashMap<>();
+				for (char ch : string.toCharArray()) {
+					Integer charCount = map.get(ch);
+					if (charCount == null) {
+						map.put(ch, 1);
+						continue;
+					}
+					map.put(ch, ++charCount);
+				}
+
+				
+				String key = ""; 
+				int value = 0;
+				for (Iterator<Entry<Character, Integer>> iterator = map.entrySet().iterator(); iterator.hasNext(); ) {
+					Entry<Character, Integer> entryKeyValue = iterator.next();
+					if(entryKeyValue.getValue() > value) {
+						value = entryKeyValue.getValue();
+						key = entryKeyValue.getKey().toString();
+					}
+				}
+				
+				System.out.println("key: "+ key + ", value: "+ value);
+
+			}
+
+		}
+
+-----------------------------------------------------------
+## How to remove all duplicates from a given string? 
+
+	Code Snippet of Completely Removing all the Duplicates:
+	
+		public class RemoveAllDuplicates {
+	
+			public static void removeAllDuplicates(String input) {
+				Set<Character> chSet = new LinkedHashSet<>();
+				
+				for(char ch : input.toCharArray()) {
+					if(chSet.contains(ch)) {
+						chSet.remove(ch);
+					} else {
+						chSet.add(ch);
+					}
+				}
+				String removedDuplicates = chSet.stream().map(ch -> Character.toString(ch)).collect(Collectors.joining(""));
+				System.out.println(removedDuplicates);
+			}
+			
+			public static void main(String[] args) {
+				removeAllDuplicates("bharath");
+			}
+
+		}
 
 
+	Code Snippet of Partially Removing Duplicates:
+	
+		public class RemoveDuplicatesPartially {
+	
+			public static void main(String[] args) {
+				removeDuplicates("bharath");
+			}
+			
+			public static void removeDuplicates(String input) {
+				LinkedHashSet<String> stringSet = input.chars().mapToObj(ch -> String.valueOf((char)ch))
+						.collect(Collectors.toCollection(LinkedHashSet::new));
+				String removedString = stringSet.stream().collect(Collectors.joining(""));
+				System.out.println(removedString);
+			}
+
+		}
+-----------------------------------------------------------
+## How to remove characters from the first String which are present in the second String?
+
+	Code Snippet:
+	
+		public class RemoveCharFromFirstString {
+	
+			public static void removeChars(String orginal, String second) {
+				orginal = orginal.toLowerCase();
+				for(char ch : second.toLowerCase().toCharArray()) {
+					orginal = orginal.replace(Character.toString(ch), "");
+				}
+				System.out.println(orginal);
+			}
+			
+			public static void main(String[] args) {
+				removeChars("India is great","in");
+			}
+		}
+
+-----------------------------------------------------------
+## How do you check if a given String contains valid parentheses?
+
+	Code Snippet:
+	
+		public class ValidParanthesis {
+	
+			public static boolean isValidParenthesis(String input) {
+				Stack<Character> stack = new Stack<>();
+				for(char ch : input.toCharArray()) {
+					switch(ch) {
+					
+					case '{':
+					case '[':
+					case '(':
+						stack.push(ch);
+					break;
+					case ']':
+						if(stack.isEmpty() || stack.peek() != '[') {
+							return false;
+						}
+						stack.pop();
+						break;
+					case '}':
+						if(stack.isEmpty() || stack.peek() != '{') {
+							return false;
+						}
+						stack.pop();
+						break;
+					case ')':
+						if(stack.isEmpty() || stack.peek() != '(') {
+							return false;
+						}
+						stack.pop();
+						break;	
+					default:
+						break;
+					}
+				}
+				
+				return stack.isEmpty();
+			}
+
+			
+			public static void main(String[] args) {
+				boolean isValid = isValidParenthesis("[({})]");
+				System.out.println(isValid);
+			}
+		}
+
+------------------------------------------------------------------
+
+## How to find all possible sub-strings in a String in Java ? 
 
 
+	Code  Snippets:
+	
+		public class PrintAllSubStrings {
+			
+			public static void printSubStrings(String s) {
+				
+				for(int i = 1; i < s.length(); i++) {
+					for(int j = 0; j < s.length() - i;j ++) {
+						String subString = s.substring(j, i + j);
+						System.out.println(subString);
+					}
+				}
+			}
 
+			
+			public static void main(String[] args) {
+				printSubStrings("abcd");
+			}
+		}
 
+		
+	Output:
+	
+		a
+		b
+		c
+		ab
+		bc
+		abc
 
+	Order of Algorithm:
+	
+		Time Complexity: O(n^2)
+	
+		
 
+## Java program to calculate length of a String using recursion?
 
+	Code Snippet:
+	
+		public class StringDemo {
+ 
+			public static void main(String[] args) {
+		 
+				System.out.println("Enter a String: ");
+				Scanner sc = new Scanner(System.in);
+				String s = sc.nextLine();
+				sc.close();
+				System.out.println("Length of the string is: " + length(s));
+			}
+		 
+			private static int length(String str) {
+				if (str.equals(""))
+					return 0;
+				else
+					return length(str.substring(1)) + 1;
+			}
+		 
+		}
+		
+## Java program to find longest substring without repeating characters in the given string
 
+	Code Snippet:
+		
+		
+		public class LongSubStringWithOutRepeatation {
 
+			public static int findSubstring(String s) {
+				s = "helloabcd";
+				int j = 0;
+				int lenSubstr = 0;
+				HashSet<Character> subset = new HashSet<Character>();
+				for (int i = 0; i < s.length(); i++) {
+					char c = s.charAt(i);
+		 
+					if (!subset.contains(c)) {
+						subset.add(c);
+						lenSubstr = Math.max(lenSubstr, subset.size());
+					} else {
+						while (j < i) {
+		 
+							if (s.charAt(j) == c) {
+								j++;
+								break;
+							} else {
+								subset.remove(s.charAt(j));
+								j++;
+							}
+						}
+		 
+						subset.add(c);
+					}
+				}
+				System.out.println("Original String = " + s);
+				System.out.println("Length of Longest substring = " + lenSubstr);
+				
+				return lenSubstr;
+			}
+			
+			public static void main(String[] args) {
+				findSubstring("Bharath");
+			}
+			
+		}
+			
