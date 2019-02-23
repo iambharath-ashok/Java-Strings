@@ -1433,3 +1433,16 @@
 			
 		}
 			
+--------------------------------------------------------------------
+## How remove all the Vowels from the String
+
+	Code Snippet:
+	
+		public class StringUtils {
+			
+			public static String removeVowels(final String inputString) {
+				return inputString.replace("[AEIOUaeiou]","");
+			}
+		
+		}
+--------------------------------------------------------------------
